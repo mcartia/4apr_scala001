@@ -1,16 +1,16 @@
 package it.training.scala;
 
-public class Person {
+public class JavaPerson {
     private Long id;
     private String firstName;
     private String lastName;
     private String email;
 
-    public Person() {
+    public JavaPerson() {
         super();
     }
 
-    public Person(Long id, String firstName, String lastName, String email) {
+    public JavaPerson(Long id, String firstName, String lastName, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
