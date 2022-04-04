@@ -24,5 +24,11 @@ object Main {
     //logger.warn("Person: "+myPerson)
     //logger.error("Person: "+myPerson)
 
+    logger.info("command line args dump...")
+    for (arg <- args) {
+      logger.info("arg: "+arg)
+    }
+
+
   }
 }
