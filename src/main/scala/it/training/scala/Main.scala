@@ -29,6 +29,28 @@ object Main {
       logger.info("arg: "+arg)
     }
 
+    logger.info("yelding example")
+    val fruits = List("apple", "banana", "lime", "orange")
+
+    val fruitLengths = for {
+      f <- fruits
+      //if f.length > 4
+    } yield f.length
+
+    fruitLengths.foreach(
+      x => {
+        logger.info("Item: "+x)
+      })
+
+    /*var i = 0
+
+    while (i<100) {
+      logger.info("i="+i)
+      i+=1
+    }*/
+
+    (1 to 100).toList.foreach( x => logger.info("i="+x) )
+
 
   }
 }
