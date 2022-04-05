@@ -49,6 +49,10 @@ object Main {
           val res = Utils.sum("sdfsdfsdfs",3)
           println(s"Result: $res")
         }
+        case "sample" => {
+          Utils.withOptional("Mario","Cartia")
+          Utils.withOptional("Mario","Cartia",Some(20))
+        }
         case "quit" => {
           println("Exiting...")
         }
