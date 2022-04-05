@@ -1,6 +1,10 @@
 package it.training.scala
 
+import it.training.scala.hier.SuperVeicolo
 import org.apache.log4j.{BasicConfigurator, Level, Logger}
+
+import java.util
+import scala.collection.mutable
 
 object Main {
   def main(args: Array[String]): Unit = {
@@ -30,8 +34,8 @@ object Main {
       lastCmd = scala.io.StdIn.readLine("cmd> ")
 
       lastCmd match {
-        case "hello" => {
-          println("Hello, world")
+        case "1" => {
+          exercise1()
         }
         case "help" => {
           println("Allowed commands: 'hello', 'quit', 'help'")
@@ -52,6 +56,43 @@ object Main {
         case "sample" => {
           Utils.withOptional("Mario","Cartia")
           Utils.withOptional("Mario","Cartia",Some(20))
+        }
+        case "superv" => {
+          val sv = new SuperVeicolo
+          sv.cammina()
+          sv.suonaCampanello()
+          sv.vola()
+          sv.aaa()
+        }
+        case "coll" => {
+          val myColl = new util.ArrayList[String]()
+          myColl.add("Ciao")
+          myColl.add("Pippo")
+          myColl.add("Pappo")
+
+          //myColl = new util.ArrayList[String]()
+
+          for ( i <- myColl.toArray() ) {
+            println(s"Elem: $i")
+          }
+        }
+        case "scalaColl" => {
+          val myList1 = List("bla1","bla2","bla3")
+          var myList2 = new mutable.ListBuffer[String]
+          myList2.addOne("one")
+          myList2.addOne("two")
+          myList2.addOne("three")
+
+          println("myList1\n-----")
+          myList1.foreach( x => {
+            println(s"elem $x")
+          })
+
+          println("myList2\n-----")
+          myList2.foreach( x => {
+            println(s"elem $x")
+          })
+
         }
         case "quit" => {
           println("Exiting...")
@@ -76,5 +117,16 @@ object Main {
       }
     }
   }
+
+  // Write a program that prints ‘Hello World’ to the screen.
+  def exercise1_1(): Unit = {
+
+  }
+
+  // testo esercizio
+  def exercise1_2(): Unit = {
+    
+  }
+
 
 }
