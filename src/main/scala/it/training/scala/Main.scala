@@ -45,6 +45,10 @@ object Main {
           val p = new Person(1,"Mario","Cartia","mario.cartia@gmail.com")
           p.printFullName()
         }
+        case "sum" => {
+          val res = Utils.sum("sdfsdfsdfs",3)
+          println(s"Result: $res")
+        }
         case "quit" => {
           println("Exiting...")
         }
@@ -52,6 +56,21 @@ object Main {
       }
     }
 
+  }
+
+  implicit def pippo(in: String): Int = {
+    try {
+    Integer.parseInt(in)
+    } catch {
+      case nfe: NumberFormatException => {
+        println(s"Can't convert: $in, returning default value (0)")
+        return 0
+      }
+      case _ => {
+        println("Unknown error, returning default value (0)")
+        return 0
+      }
+    }
   }
 
 }
