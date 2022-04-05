@@ -15,6 +15,8 @@ object Main {
     // Github:
     // https://github.com/mcartia/4apr_scala001
 
+    // https://www.scala-lang.org/api/2.13.8/
+
     BasicConfigurator.configure()
     Logger.getRootLogger.setLevel(Level.INFO)
 
@@ -35,7 +37,7 @@ object Main {
 
       lastCmd match {
         case "1" => {
-          exercise1()
+          exercise1_1()
         }
         case "help" => {
           println("Allowed commands: 'hello', 'quit', 'help'")
@@ -125,7 +127,7 @@ object Main {
 
   // testo esercizio
   def exercise1_2(): Unit = {
-    
+
   }
 
 
