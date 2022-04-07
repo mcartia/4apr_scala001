@@ -7,10 +7,12 @@ import io.circe.generic.auto._
 object HttpExample extends App {
 
   val query = "http language:scala"
-  val sort: Option[String] = None
+  val sort: String = "stars"
+  val order: String = "desc"
+  val pPage: Int = 50
 
   val request = basicRequest
-                .get(uri"https://api.github.com/search/repositories?q=$query&sort=$sort")
+                .get(uri"https://api.github.com/search/repositories?q=$query&sort=$sort&order=$order&per_page=$pPage")
                 .response(asJson[GitHubResponse])
 
   val response = request.send(backend)

@@ -1,7 +1,6 @@
 package it.training.scala.json
 
-import io.circe.generic.semiauto
-import io.circe.{Decoder, jawn}
+import io.circe.generic.auto._, io.circe.parser._
 
 object JsonExample {
   def main(args: Array[String]):Unit = {
@@ -13,9 +12,8 @@ object JsonExample {
         |"lastName":"Cartia"
         |}""".stripMargin
 
-    implicit val jsonDecoder: Decoder[PersonJson] = semiauto.deriveDecoder[PersonJson]
+    val person = decode[PersonJson](sampleJson)
 
-    val person = jawn.decode[PersonJson](sampleJson)
     person match {
       case Left(e) => {
         println(s"Si è verificato un errore: $e")      }
@@ -27,7 +25,6 @@ object JsonExample {
           lastName: ${pJson.lastName}
           email: ${pJson.email.getOrElse("non specificato")}
         """)
-
       }
     }
   }
