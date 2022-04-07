@@ -14,12 +14,18 @@ dato formato json:
 
 val jsonString =
   """
-    |{
-    |  "id": 1,
+    |[{
+    |  "id": "1",
     |  "firstName": "Mario",
     |  "lastName": "Cartia",
     |  "email": "mario.cartia@gmail.com"
-    |}
+    |},
+    |{
+    |  "id": "2",
+    |  "firstName": "Giuseppe",
+    |  "lastName": "Rossi",
+    |  "email": "g.rossi@gmail.com"
+    |}]
     |""".stripMargin
 
 case class Person(id: Long,
@@ -27,13 +33,30 @@ case class Person(id: Long,
                   lastName: String,
                   email: Option[String])
 
-val decodeResult = decode[Person](jsonString)
+
+val decodeResult = decode[List[Map[String,String]]](jsonString)
 
 decodeResult match {
   case Left(err) => {
     println(s"Error: $err")
   }
-  case Right(person) => {
+  case Right(pList) => pList.foreach( pMap => {
+    println(s"Person\n-----")
+    pMap.foreach(p => {
+      println(s"${p._1}: ${p._2}")
+    })
+    println("")
+  })
+}
+
+/*val decodeResult = decode[List[Person]](jsonString)
+
+decodeResult match {
+  case Left(err) => {
+    println(s"Error: $err")
+  }
+  case Right(personList) => {
+    personList.foreach( person =>
     println(
       s"""
          |Person
@@ -43,5 +66,6 @@ decodeResult match {
          |lastName: ${person.lastName}
          |email: ${person.email.getOrElse("undefined")}
          |""".stripMargin)
+    )
   }
-}
+}*/
