@@ -1,5 +1,6 @@
 import io.circe.generic.auto._
 import io.circe.parser._
+import io.circe.syntax._
 
 /*
 dato formato json:
@@ -76,3 +77,24 @@ decodeResult match {
     println("")
   })
 }*/
+
+val personList = List(
+  Person(1,
+        "Mario",
+        "Cartia",
+        Contact(
+            Some("+39 321 345632"),
+            Some("mario.cartia@gmail.com")
+        )),
+  Person(2,
+    "Giuseppe",
+    "Rossi",
+    Contact(
+      Some("+39 321 345688"),
+      Some("g.rossi@gmail.com")
+    )),
+)
+
+val pListJson = personList.asJson
+
+println(pListJson)
