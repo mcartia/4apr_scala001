@@ -35,6 +35,12 @@ object MyApi extends MainRoutes {
     cask.Response(peopleList.asJson.toString, headers = Seq(("Content-Type","application/json")))
   }
 
+  @cask.post("/reverse")
+  def reverse(request: cask.Request): String = {
+    val in = request.text
+    s"original input: $in, reversed output: ${in.reverse}"
+  }
+
   def rs2People(rs: WrappedResultSet): People = {
     People(
       rs.long("id"),
