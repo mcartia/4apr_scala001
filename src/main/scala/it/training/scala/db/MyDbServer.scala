@@ -15,6 +15,7 @@ class MyDBServer {
   def startDb(): Boolean = {
     Try {
       server = Server.createTcpServer("-tcpPort", "9092", "-tcpAllowOthers", "-ifNotExists").start
+
       Class.forName("org.h2.Driver")
       conn = DriverManager.getConnection("jdbc:h2:tcp://localhost:9092/~/scalaDb;DB_CLOSE_ON_EXIT=FALSE", "sa", "password")
       conn.createStatement.execute("SELECT 1")

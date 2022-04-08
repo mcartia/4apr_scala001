@@ -16,6 +16,7 @@ object DbInit {
     ConnectionPool.singleton("jdbc:h2:tcp://localhost:9092/~/scalaDb","sa","password")
 
     implicit val session = AutoSession
+
     sql"""
          drop table people
        """.update.apply
@@ -47,6 +48,7 @@ object DbInit {
     }
 
     dbServer.stop()
+    System.exit(0)
   }
 }
 
