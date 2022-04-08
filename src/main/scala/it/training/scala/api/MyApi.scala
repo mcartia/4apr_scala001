@@ -1,5 +1,6 @@
 package it.training.scala.api
 
+import cask.Request
 import cask.main.MainRoutes
 import org.apache.log4j.{BasicConfigurator, Level, Logger}
 import scalikejdbc._
@@ -23,7 +24,7 @@ object MyApi extends MainRoutes {
   }
 
   @cask.get("/test")
-  def test(): String = {
+  def test() = {
     var jsonOut = ""
     implicit val encoder: Encoder[People] = deriveEncoder[People]
 
@@ -31,7 +32,7 @@ object MyApi extends MainRoutes {
          |select * from people
          |""".stripMargin.map(rs=>{rs2People(rs)}).list.apply
 
-    peopleList.asJson.toString
+    cask.Response(peopleList.asJson.toString, headers = Seq(("Content-Type","application/json")))
   }
 
   def rs2People(rs: WrappedResultSet): People = {
