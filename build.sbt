@@ -13,3 +13,8 @@ libraryDependencies += "com.lihaoyi" %% "cask" % "0.8.0"
 libraryDependencies += "io.circe" %% "circe-generic" % "0.14.1"
 libraryDependencies += "com.softwaremill.sttp.client3" %% "core" % "3.5.1"
 libraryDependencies += "com.softwaremill.sttp.client3" %% "circe" % "3.5.1"
+
+libraryDependencies += "org.apache.spark" %% "spark-core" % "3.2.1"
+libraryDependencies += "org.apache.spark" %% "spark-sql" % "3.2.1"
+
+libraryDependencies += "com.github.javafaker" % "javafaker" % "1.0.2"
