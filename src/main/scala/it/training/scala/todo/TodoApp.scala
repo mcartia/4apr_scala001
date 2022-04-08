@@ -27,6 +27,7 @@ object TodoApp {
           })
 
         if (!found) throw new Exception("Invalid command")
+
       } catch {
         case e: Exception => println(s"Error: ${e.getMessage}")
       }

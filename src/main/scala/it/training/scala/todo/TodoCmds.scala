@@ -10,7 +10,18 @@ class TodoCmds(todos: mutable.Map[Long,ToDo]) {
   }
 
   def add(args: List[String]=List.empty): Boolean = {
-    if (args.length==3) todos.addOne(args(0).toInt,ToDo(args(0).trim.toInt,args(1).trim,args(2).trim))
+    if (args.length==3) {
+      val id = args(0).toInt
+      val description = args(1)
+      val dueDate = args(2)
+      println(s"Adding new Todo - id=$id, description=$description, dueDate=$dueDate")
+      todos.addOne( id,
+                    ToDo(id,description,dueDate)
+      )
+    } else {
+      println(s"Wrong arguments number (${args.length})")
+      return false
+    }
     true
   }
 
@@ -55,6 +66,11 @@ class TodoCmds(todos: mutable.Map[Long,ToDo]) {
       println("Already populated!")
     }
     list()
+    true
+  }
+
+  def pippo(args: List[String]=List.empty): Boolean = {
+    println("++++ PIPPO ++++")
     true
   }
 }
